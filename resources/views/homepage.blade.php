@@ -6,6 +6,7 @@
 
 
         @include('homepage.includes.navbar')
+        
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
