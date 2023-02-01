@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Delete;
+
 
 class UserController extends Controller
 {
@@ -31,12 +33,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
 
@@ -85,11 +82,18 @@ class UserController extends Controller
 
         return redirect('/users/update/' . $user->id);
     }
-    
 
 
       public function destroy($id)
     {
-        //
+
+  
+
+        $user = User::find($id);
+        $user->delete();
+
+        session()->flash('status', 'delete User Successfully!');
+
+        return redirect('/users');
     }
 }

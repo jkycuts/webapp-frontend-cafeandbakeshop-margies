@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,13 +29,26 @@ Route::get('/users', [UserController::class, 'index'])
         ->name('users');
 
 Route::get('/users/add', [UserController::class, 'form'])
-        ->middleware(['auth', 'verified'])
-        ->name('users.add');
+        ->middleware(['auth', 'verified']);
 
 Route::post('/users/add', [UserController::class, 'store'])
-        ->middleware(['auth', 'verified'])
-        ->name('users.add');
+        ->middleware(['auth', 'verified']);
 
+Route::get('/users/update/{id}', [UserController::class, 'show'])
+        ->middleware(['auth', 'verified']);
+
+Route::post('/users/update/{id}', [UserController::class, 'update'])
+        ->middleware(['auth', 'verified']);
+
+Route::get('/users/password/{id}', [UserController::class, 'password'])
+        ->middleware(['auth', 'verified']);
+
+Route::get('/users/delete/{id}', [UserController::class, 'index'])
+        ->middleware(['auth', 'verified']);
+
+Route::get('/users/delete/{id}', [UserController::class, 'destroy'])
+        ->middleware(['auth', 'verified']);
+        
 
 
 

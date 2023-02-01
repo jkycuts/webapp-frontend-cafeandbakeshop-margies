@@ -18,6 +18,8 @@
     </head>
     <body id="page-top">
 
+       
+
         @yield('content')
 
      <!-- Bootstrap core JS-->
